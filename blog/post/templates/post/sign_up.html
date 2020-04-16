@@ -1,0 +1,21 @@
+{% extends 'nav.html'%}
+{% block title%}Signup{% endblock %}
+
+{% block body %}
+<body id="signup">
+<div class="box">
+<div class="container" id="reg">
+        <div class="row">
+        <form method="POST" class="signup" action="{% url 'post:sign_up'%}">
+            {% csrf_token %}
+            <h1 id="signup_h1">Signup</h1>
+            <input type="text" name="username" placeholder="Username"/ required><br>
+            <input type="email" name="email" placeholder="Email"/ required><br>
+            <input type="password" name='password' placeholder="Password"/ required><br>
+            <input type='submit' value="Submit"/><br>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+{% endblock %}

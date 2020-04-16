@@ -1,0 +1,75 @@
+{% extends 'nav.html'%}
+{% block title%}Add Post{% endblock %}
+
+{% block body %}
+<body id="addpost">
+        <script type="text/javascript"> 
+            var tags = [  
+            "Adventure", 
+            "Music", 
+            "Coding", 
+            "Food", 
+            "Sports", 
+            "Books", 
+            "Travel", 
+            "Hangout",
+            "Anime",
+            "Dance" 
+              ]; 
+          
+              /*list of available options*/ 
+             var n= tags.length; //length of datalist tags     
+          
+             function ac(value) { 
+                document.getElementById('datalist').innerHTML = ''; 
+                 //setting datalist empty at the start of function 
+                 //if we skip this step, same name will be repeated 
+                   
+                 l=value.length; 
+                 //input query length 
+             for (var i = 0; i<n; i++) { 
+                 if(((tags[i].toLowerCase()).indexOf(value.toLowerCase()))>-1) 
+                 { 
+                     //comparing if input string is existing in tags[i] string 
+          
+                     var node = document.createElement("option"); 
+                     var val = document.createTextNode(tags[i]); 
+                      node.appendChild(val); 
+          
+                       document.getElementById("datalist").appendChild(node); 
+                           //creating and appending new elements in data list 
+                     } 
+                 } 
+             } 
+           
+        </script> 
+
+<div class="addpost">
+    <div class="container">
+            <form method="POST" action="{% url 'post:add_post'%}"  enctype="multipart/form-data">
+                {% csrf_token %} 
+                <h1 id="add_h1">Create Post</h1><br>
+                <label>Title:</label><br><input type="text" name="p_title" required><br>
+                <label>Content:</label><br><textarea name="p_desc" required></textarea><br><br>
+                <label>Image:</label><br><input type="file" style="font-family: 'Playfair Display', serif; font-size:18px" name="file" required><br>
+                <label>Tag:</label><br><input type="text" name="tag" autocomplete="off" list="datalist" onkeyup="ac(this.value)">
+                <datalist id="datalist"> 
+                        <option value="Adventure"></option> 
+                        <option value="Music"></option> 
+                        <option value="Coding"></option> 
+                        <option value="Food"></option> 
+                        <option value="Sports"></option> 
+                        <option value="Books"></option> 
+                        <option value="Travel"></option> 
+                        <option value="Hangout"></option> 
+                        <option value="Anime"></option> 
+                        <option value="Dance"></option> 
+                        </datalist><br>
+                <button type="submit" style="font-family: 'Playfair Display', serif; font-size:20px">Post</button>
+            </form>
+        
+    </div>
+</div>
+
+
+{% endblock %}

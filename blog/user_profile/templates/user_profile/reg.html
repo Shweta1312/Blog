@@ -1,0 +1,14 @@
+{% extends 'nav.html' %}
+
+{% block body %}
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'user_profile/newstyle.css' %}">
+
+<form action="{% url 'user_profile:view_reg' %}" method="post" name="main_form" enctype="multipart/form-data">
+        {% csrf_token %}
+    <h4><b><br>Registration Info</b></h4><br>
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+    </form>
+  {% endblock %}

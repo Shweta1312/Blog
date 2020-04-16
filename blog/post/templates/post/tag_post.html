@@ -1,0 +1,49 @@
+{% extends 'nav.html'%}
+
+{% block body %}
+<script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+</script>
+
+
+<body>
+        <div class="container-fluid">
+                <h2 style="font-family: 'Playfair Display', serif; font-size:40px; margin-left: 5%;">{{tag}}</h2><br>
+                {% for p in p %}
+                <div class="col-lg-3">
+                <div class="card" style="width:100%">
+                        <a href="{% url 'post:detail' p.id %}" style="text-decoration: none;"><img src="{{p.file.url}}" id="post_img"></a>
+                        <div class="card_desc">
+                                <p style="color:rgb(161, 156, 156); font-size: 22px; font-family: 'Bree Serif', serif;">#{{p.tag}}</p>
+                                <h4 style="font-family: 'Grenze', serif;font-size:26px">{{p.p_title}}</h4>
+                                <a href="{% url 'post:detail' p.id %}" style="color:rgb(255, 100, 38); font-size: 24px; font-family: 'Bree Serif', serif;">Read more<span class="glyphicon glyphicon-chevron-right" style="font-size: 16px;"></span></a><br><br>
+                        </div>
+                </div>
+                </div>
+                {% endfor %}
+                {% if user.is_authenticated %}
+                        <a href="{% url 'post:add_post'%}" class="btn btn-info btn-lg pen" id="pen"><span class="glyphicon glyphicon-pencil" id="pencil"></span></a>
+                {% else %}
+                        <a href="#" class="btn btn-info btn-lg pen" id="pen"><div data-toggle="tooltip" data-html="true" title="<p style='font-size:16px'><b>Login to create post</b></p>"><span class="glyphicon glyphicon-pencil" id="pencil"></span></div></a>
+                {% endif %} 
+
+        </div>
+
+</body>
+<footer class="site-footer" >
+        <div class="container" >
+                <div class="row" style="font-size: 16px; font-family: 'Bree Serif', serif;">
+                        <div class="col-sm-12 col-md-6">
+                                <h6>About</h6>
+                                <p>Blog is a site where one can discover new things and share their own lifestyle with others. They can share posts & images of any category. Through this, one can view his ideas & messages to the world and can get to know what others think about their post.</p>
+                        </div>
+                        <div class="col-lg-6 col-md-12" style="padding: 1% 20%;">
+                                <h6><a href="#" style="color: white;">Contact us</a></h6><br>
+                                <h6><a href="#" style="color: white;">About us</h6>
+                        </div>
+                </div>
+        </div>
+  </footer>
+{% endblock %}

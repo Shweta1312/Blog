@@ -1,0 +1,74 @@
+{% extends 'nav.html'%}
+
+{% block body %}
+<body>   
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+</script>
+
+<div>
+    <div class="col-lg-6" style="padding: 1% 2%;font-family: 'Neuton', serif;">
+        <h2>Do you have a curiousity to get to know something new and different....</h2>
+        <h2>Do you love to write about your life....</h2><br>
+        <h2>Then <span style="color: #2F2FA2 ; font-size: 40px">"Blog"</span> is the right place for you</h2>
+    </div>
+    <div class="col-lg-6">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFehdRJB5DQtgptuLCBp7tDAbkpCgoA9RbSYL2IIeqDSdfzlqs" style="width: 650px;">
+    </div>
+
+<section>
+    <div class="container" id="post"> 
+            <div class="col-lg-6 col-md-12">
+                <h1 style="font-family: 'Playfair Display', serif; font-size:40px;">Recent Posts</h1><br>
+                    {% for p in p|slice:"4" %}
+                   <div class="col-lg-6" id="recent">
+                        <div class="row">
+                            <div id="recent_div"><a href="{% url 'post:detail' p.id %}" style="text-decoration: none;"><img src="{{p.file.url}}" id="recent_img"></a><br></div>
+                            <a href="{% url 'post:tag_post' p.tag%}" style="text-decoration: none;"><p style="color:rgb(161, 156, 156); font-size: 22px; font-family: 'Bree Serif', serif;">#{{p.tag}}</p></a>
+                            <h4 style="font-family: 'Grenze', serif;font-size:26px">{{p.p_title}}</h4>
+                            <a href="{% url 'post:detail' p.id %}" style="color:rgb(255, 100, 38); font-size: 24px; font-family: 'Bree Serif', serif;">Read more<span class="glyphicon glyphicon-chevron-right" style="font-size: 16px;"></span></a><br><br>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+
+            <div class="col-lg-6 col-md-12" id="tag_img" >
+                <div class='wrapper'>
+                        <img src='https://i.pinimg.com/564x/26/64/ed/2664ed9a7129fef9369f5fcf24a9d9fe.jpg' />
+                        <div class='description'>
+                            <h4 class='description_content'>Tags</h4>
+                            {% for t in t|slice:"4" %}
+                            <a href="{% url 'post:tag_post' t.tag%}" style="text-decoration: none;"><p id="p">{{t.tag}}</p></a>
+                            {% endfor %}
+                            <p>and many more...</p>
+                        </div>
+                    </div>
+            </div>
+    </div>
+</section>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'post:add_post'%}" class="btn btn-info btn-lg pen" id="pen"><span class="glyphicon glyphicon-pencil" id="pencil"></span></a>
+{% else %}
+    <a href="#" class="btn btn-info btn-lg pen" id="pen"><div data-toggle="tooltip" data-html="true" title="<p style='font-size:16px'><b>Login to create post</b></p>"><span class="glyphicon glyphicon-pencil" id="pencil"></span></div></a>
+{% endif %} 
+
+</body>
+
+<footer class="site-footer" >
+    <div class="container" >
+            <div class="row" style="font-size: 16px; font-family: 'Bree Serif', serif;">
+                    <div class="col-sm-12 col-md-6">
+                            <h6>About</h6>
+                            <p>Blog is a site where one can discover new things and share their own lifestyle with others. They can share posts & images of any category. Through this, one can view his ideas & messages to the world and can get to know what others think about their post.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-12" style="padding: 1% 20%;">
+                            <h6><a href="#" style="color: white;">Contact us</a></h6><br>
+                            <h6><a href="#" style="color: white;">About us</h6>
+                    </div>
+            </div>
+    </div>
+</footer>
+{% endblock %}

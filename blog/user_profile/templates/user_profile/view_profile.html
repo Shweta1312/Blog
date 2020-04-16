@@ -1,0 +1,42 @@
+{% extends 'nav.html' %}
+
+{% block body %}
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'user_profile/style.css' %}">
+
+<title>Profile</title>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+ 
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<link href='//fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
+<div class="container top50">
+
+        <div class="row">
+        	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+                <div class="item-1">
+                	<div class="img-container">
+                    	<a href="#"><img src="{{profile.image.url}}" /></a>
+                    </div>
+                    <div class="robin-key">
+                      <p>{{ profile.profile_name }}</p><br></div>
+                      <div class="robin-key"><p>{{ profile.user_name.username }}</p><br></div>
+                      <div class="robin-key"><p>Bio: {{ profile.bio }}</p><br></div>
+                      <div class="robin-key"><p>Goals - Interests: {{ profile.interests }}</p><br></div>
+                      <div class="robin-key"><p>Email: {{ profile.user_name.email }}</p><br></div>
+                      <div class="robin-key"><p>Phone no: {{  profile.phone }}</p><br></div>                      
+                      <div class="robin-key"><p>Age: {{ profile.age }}</p><br></div>
+
+                
+                </div>
+            </div>
+        </div>
+
+    </div>
+  {% endblock %}

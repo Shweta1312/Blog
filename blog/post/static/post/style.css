@@ -1,0 +1,215 @@
+*:focus{
+  outline: none;
+}
+@media only screen and (max-width:800px){
+  #reg .row, .form,.container{
+    width:100%;
+  }
+  #reg .row{
+    margin: 8% 3%;
+  }
+  .addpost .container{
+    padding: 0 1%;
+  }
+}
+
+#navbar{
+  border-radius: 0;
+  background-color: #2F2FA2;
+  height: 10%
+  
+}
+.navbar-brand{
+  font-family: 'Engagement', cursive;
+  font-size: 60px;
+  margin-top: 10px;
+}
+#navlist li{
+  font-size: 130%;
+  margin-top: 1%; 
+}
+.float{
+  position:fixed;
+  right:80px;
+  bottom:70px;
+  padding: 6px;
+  height:70px;
+  width: 70px;
+  border-radius: 50px;
+  text-align:center;
+  box-shadow: 3px 3px 3px #999;
+  background-color: #2F2FA2;
+  color:white;
+}
+
+
+#pen{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  border-radius:50px;
+  width:70px;
+  height:60px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+  background-color: #2F2FA2;
+  border-color: #2F2FA2;
+}
+
+#pencil, #pencil:hover, #pencil:active{
+  font-size: 30px;
+  margin-top: 70px;
+  margin-left: 22px;
+  text-decoration: none;
+  color: white;
+}
+
+/*Login & signup*/
+#login{
+  background-image: url('back2.jpg');
+}
+#signup{
+  background-image: url('back3.jpg');
+}
+#reg .row {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 85%;
+  height: 72%;
+  margin: 0 10%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#reg .row:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+ 
+.box #reg{
+  padding: 3% 10%;
+}
+
+form.login{
+  padding:3% 6%;
+  margin: 5% 10%;
+}
+form.signup{
+  padding:5% 4%;
+  margin: 1% 14% 6%;
+}
+.box input[type=text], input[type=password],input[type=email]{
+  padding: 8px;
+  width: 90%;
+  margin:3%;
+  border-radius:40px;
+}
+.box input[type=submit]{
+  margin: 2%;
+  padding:8px;
+  width:90%;
+  border-radius: 15px;
+  background-color: #2F2FA2;
+  border-color: #2F2FA2;
+  color: white;
+}
+.box a{
+  color: white;
+  text-decoration-line: underline;
+}
+.box a:hover{
+  color: steelblue;
+}
+#login_h1{
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 8%;
+  margin-top: 3%;
+  color: white;
+}
+#signup_h1{
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10%;
+  margin-top: 0;
+  color: white;
+}
+#log_p{
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  margin-top: 5%;
+  margin-bottom: 8%;
+  font-size: 22px;
+  width: 100%;
+  color: white;
+}
+
+/*Add Post*/
+#addpost{
+  background-image: url('img.jpg');
+}
+
+.addpost .container{
+  width:56%;
+  height: 100%;
+  margin: 1% 24%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+}
+.addpost form{
+  width: 80%;
+  font-size: 130%;
+  padding: 1% 2%;
+  margin: 0 14%;
+}
+#add_h1{
+  margin-left: 22%;
+  font-family: 'Playfair Display', serif;
+  font-size:40px;
+  color: #2F2FA2;
+}
+.addpost input[type=text]{
+  padding: 2px;
+  width: 90%;
+  margin: 1% 0;
+  border-radius: 50px;
+  border-bottom-color:rgb(219, 213, 213);
+}
+.addpost input[type=file]{
+  margin: 2% 0;
+  font-size: 100%;
+  border-radius: 10px;
+}
+
+.addpost button{
+  padding: 3px;
+  width: 20%;
+  margin: 5% 70%;
+  border-radius: 15px;
+  background-color: #2F2FA2;
+  color: white;
+  border-color: #2F2FA2;
+}
+.addpost textarea{
+  width: 90%;
+  height: 20%;
+  border-radius: 20px;
+}
+
+.addpost .image{
+  padding: 2%;
+  margin: 5% 0%; 
+}
+#add_p{
+  font-size: 200%;
+  text-align: center;
+  margin: 2%;
+  font-weight: bold;
+}
+.addpost label{
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+}
+
+

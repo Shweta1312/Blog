@@ -1,0 +1,66 @@
+{% extends 'nav.html'%}
+
+{% block body %}
+<script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+</script>
+
+<body>  
+  
+  <div>
+    <h1 style="font-family: 'Grenze', serif;font-size: 70px; text-align: center;">{{p.p_title}}</h1>
+    <p style="font-size: 35px;margin:0 70% ;">-&nbsp;<a href="#">{{p.user}}</a></p>
+  </div><br>
+    
+    <div class="container">
+        <div class="col-lg-12">
+                <img src="{{p.file.url}}" id="detail_img">
+                <div class="col-lg-6">
+                        <a href="{% url 'post:tag_post' p.tag%}" style="text-decoration: none;"><p style="color:rgb(161, 156, 156); font-size: 22px; font-family: 'Bree Serif', serif;margin: 1% 38%;">#{{p.tag}}</p></a>
+                </div>
+                <div class="col-lg-6">
+                <form action="{% url 'post:like' p.id%}" method="POST">
+                    {% csrf_token %}
+                    {% if is_liked %}
+                    <button type="submit" name="post_id" value="{{p.id}}" style="margin:2% 45% " style="background-color: crimson;">Dislike</button>
+                    {% else %}
+                        {% if user.is_authenticated %}
+                        <button type="submit" name="post_id" value="{{p.id}}" style="margin:2% 45% " style="background-color: cornflowerblue;">Like</button>
+                        {% else %}
+                        <div data-toggle="tooltip" data-html="true" title="<p style='font-size:16px'><b>Login to like the post</b></p>"><a href="#"><input type="button" name="post_id" value="Like" style="margin:2% 45% "></a></div>
+                        {% endif %}
+                    {% endif %}
+                    <p style="margin:1% 45%">{{total_likes}}&nbsp;Likes</p>
+                  </form>
+                  </div>
+        </div>
+
+        <div class="col-lg-12"><br>
+                <p style="font-family: 'Amaranth', sans-serif;font-size:20px">{{p.p_desc}}</p><br>
+        </div>
+      </div>
+</div>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'post:add_post'%}" class="btn btn-info btn-lg pen" id="pen"><span class="glyphicon glyphicon-pencil" id="pencil"></span></a>
+{% else %}
+    <a href="#" class="btn btn-info btn-lg pen" id="pen"><div data-toggle="tooltip" data-html="true" title="<p style='font-size:16px'><b>Login to create post</b></p>"><span class="glyphicon glyphicon-pencil" id="pencil"></span></div></a>
+{% endif %} 
+
+<footer class="site-footer" >
+  <div class="container" >
+          <div class="row" style="font-size: 16px; font-family: 'Bree Serif', serif;">
+                  <div class="col-sm-12 col-md-6">
+                          <h6>About</h6>
+                          <p>Blog is a site where one can discover new things and share their own lifestyle with others. They can share posts & images of any category. Through this, one can view his ideas & messages to the world and can get to know what others think about their post.</p>
+                  </div>
+                  <div class="col-lg-6 col-md-12" style="padding: 1% 20%;">
+                          <h6><a href="#" style="color: white;">Contact us</a></h6><br>
+                          <h6><a href="#" style="color: white;">About us</h6>
+                  </div>
+          </div>
+  </div>
+</footer>
+{% endblock %}
